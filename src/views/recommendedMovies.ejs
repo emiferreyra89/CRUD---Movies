@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimos estrenos</title>
+    <link rel='stylesheet' href='/css/style.css' />
+</head>
+<body>
+    <figure>
+        <a href="/"><img src="/img/logo-DH.png" alt="Logo Digital House"></a>
+    </figure>
+    <div class="div_titulo"><h1>ULTIMOS 5 ESTRENOS</h1></div>
+    <ul>
+        <% for( let i = 0; i < movies.length; i++ ) { %>
+        <li class="div_movies_new">
+            <a href="/movies/detail/<%=movies[i].id%>"><p><%= movies[i].title %></p></a> <br>
+            <span><%= 'LANZAMIENTO: ' + movies[i].release_date %></span>  <br>
+            <span><%= 'RATING: ' + movies[i].rating %></span>
+        </li>
+        <% } %>
+    </ul>
+    <div class="div_button">
+        <a href="/movies/recommended"><button>Top</button></a>
+        <a href="/"><button>Home</button></a>
+    </div>
+</body>
+</html>
