@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title><%= title %></title>
+        <link rel='stylesheet' href='/css/style.css' />
+    </head>
+    <body>
+        <figure>
+            <a href="/"><img src="/img/logo-DH.png" alt="Logo Digital House"></a>
+        </figure>
+        
+        <div class="div_titulo"><h1>Actualice los datos de <%= MoViE.title %>...</h1></div>
+        
+        <form action="/movies/update/<%= MoViE.id %>?method_PUT" method="post">
+            <div class="div_form">
+                <label for="">ID</label>
+                <input type="number">
+            </div>
+            <div class="div_form">
+                <label for="">Title</label>
+                <input type="text">
+            </div>
+            <div class="div_form">
+                <label for="">Rating</label>
+                <input type="text">
+            </div>
+            <div class="div_form">
+                <label for="">Awards</label>
+                <input type="text">
+            </div>
+            <div class="div_form">
+                <label for="">Release Date</label>
+                <input type="text">
+            </div>
+            <div class="div_form">
+                <label for="">Length</label>
+                <input type="text">
+            </div>
+        
+            <div class="div_button">
+                <button type="submit">Save</button>   
+            </div>
+        </form> <br>
+
+        <div class="div_button">
+            <a href="/movies"><button>Cancel</button></a>
+        </div>
+
+    </body>
+</html>

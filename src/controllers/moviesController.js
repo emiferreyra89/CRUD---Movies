@@ -49,6 +49,26 @@ const moviesController = {
             .catch(error => {
                 res.send("Por aca no es")
             })
+    },
+
+    add: (req,res) => {
+        res.render('form-create-movies', {title:'New Movie'})
+    },
+
+    create: (req,res) => {
+        res.send('Pagina PROCESO CREAR en construccion')
+    },
+
+    edit: (req,res) => {
+        res.render('form-update-movies', {title:'Edit Movie'})
+    },
+
+    update: (req,res) => {
+        res.send('Pagina PROCESO EDITAR en construccion')
+    },
+
+    delete: (req,res) => {
+        res.send('Pagina ELIMINAR en construccion')
     }
 }
 
