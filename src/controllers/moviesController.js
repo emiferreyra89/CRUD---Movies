@@ -1,4 +1,5 @@
 const db = require('../database/models/index');
+const {validationResult} = require('express-validator')
 
 const moviesController = {
     list: (req,res) => {
@@ -28,6 +29,7 @@ const moviesController = {
     recomended: (req,res) => {
         db.Movie.findAll({
             order : [
+                ['rating','DESC'],
                 ['release_date','DESC']
             ],
             limit : 5
@@ -56,19 +58,84 @@ const moviesController = {
     },
 
     create: (req,res) => {
-        res.send('Pagina PROCESO CREAR en construccion')
+        const errors = validationResult(req)
+        if(!errors.isEmpty()){
+            res.render('form-create-movies', {title:'New Movie', errors:errors.mapped(), oldData:req.body})
+        } else {
+            const {title,rating,awards,release_date,length} = req.body;
+            db.Movie.create({
+                title,
+                rating,
+                awards,
+                release_date,
+                length
+            })
+            .then(movie => {
+                res.redirect('/movies/new')
+            })
+            .catch(error => {
+                res.send("Por aca no es")
+            })
+        }
     },
 
     edit: (req,res) => {
-        res.render('form-update-movies', {title:'Edit Movie'})
+        const {id} = req.params
+        db.Movie.findByPk(id)
+            .then((movie) => {
+                res.render('form-update-movies', {title:'Edit Movie', movie:movie })
+            })
+            .catch(error => {
+                res.send("Por aca no es")
+            })
     },
 
     update: (req,res) => {
-        res.send('Pagina PROCESO EDITAR en construccion')
+        const errors = validationResult(req);
+        const {id} = req.params;
+        const {title,rating,awards,release_date,length} = req.body;
+        if(!errors.isEmpty()) {
+            db.Movie.findByPk(id)
+            .then((movie) => {
+                res.render('form-update-movies', {title:'Edit Movie', movie:movie, errors:errors.mapped(), oldData:req.body })
+            })
+            .catch(error => {
+                res.send("Por aca no es")
+            })
+        } else {
+            db.Movie.update(
+                {
+                    id,
+                    title,
+                    rating,
+                    awards,
+                    release_date,
+                    length
+                }, 
+                {
+                    where : { id }
+                }
+            )
+            .then(movie => {
+                res.redirect(`/movies/detail/${id}`)
+            })
+            .catch(error => {
+                res.send("Por aca no es")
+            })
+        }
     },
 
     delete: (req,res) => {
-        res.send('Pagina ELIMINAR en construccion')
+        const {id} = req.params
+        db.Movie.destroy({
+            where : { id }
+        })
+        .then(movie => {
+            res.redirect('/movies')
+        })
+        .catch(error => {
+            res.render('errorView',{title:"Error"})
+        })   
     }
 }
 

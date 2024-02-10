@@ -12,29 +12,31 @@
         <div class="div_titulo"><h1>Complete los datos de la nueva pelicula...</h1></div>
         
         <form action="/movies/create" method="post">
+
             <div class="div_form">
-                <label for="">ID</label>
-                <input type="number">
+                <label for="title">Title</label>
+                <input type="text" name="title" value="<%= locals.oldData ? oldData.title : null %>" placeholder="Titulo de la pelicula">
+                <p class="errors_validations"><%= locals.errors && errors.title ? errors.title.msg: null %></p>
             </div>
             <div class="div_form">
-                <label for="">Title</label>
-                <input type="text">
+                <label for="rating">Rating</label>
+                <input type="text" name="rating" value="<%= locals.oldData ? oldData.rating : null %>" placeholder="Valoracion de la pelicula (Por ej. 8.5 o 10)">
+                <p class="errors_validations"><%= locals.errors && errors.rating ? errors.rating.msg: null %></p>
             </div>
             <div class="div_form">
-                <label for="">Rating</label>
-                <input type="text">
+                <label for="awards">Awards</label>
+                <input type="text" name="awards" value="<%= locals.oldData ? oldData.awards : null %>" placeholder="Premios de la pelicula (Por ej. 0 o 5)">
+                <p class="errors_validations"><%= locals.errors && errors.awards ? errors.awards.msg: null %></p>
             </div>
             <div class="div_form">
-                <label for="">Awards</label>
-                <input type="text">
+                <label for="release_date">Release Date</label>
+                <input type="date" name="release_date" value="<%= locals.oldData ? oldData.release_date : null %>" placeholder="Lanzamiento de la pelicula">
+                <p class="errors_validations"><%= locals.errors && errors.release_date ? errors.release_date.msg: null %></p>
             </div>
             <div class="div_form">
-                <label for="">Release Date</label>
-                <input type="text">
-            </div>
-            <div class="div_form">
-                <label for="">Length</label>
-                <input type="text">
+                <label for="length">Length</label>
+                <input type="text" name="length" value="<%= locals.oldData ? oldData.length : null %>" placeholder="Duracion de la pelicula en minutos (Por ej. 120)">
+                <p class="errors_validations"><%= locals.errors && errors.length ? errors.length.msg: null %></p>
             </div>
         
             <div class="div_button">

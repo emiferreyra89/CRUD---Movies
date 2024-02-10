@@ -21,7 +21,7 @@
     </div>
     <div class="div_button">
         <a href="/movies/edit/<%= movie.id %>"><button>Edit</button></a>
-        <a href="/movies/delete/<%= movie.id %>"><button>Delete</button></a>
+        <form action="/movies/delete/<%= movie.id %>?_method=DELETE" method="post"><button type="submit">Delete</button></form>
         <a href="/movies"><button>Movies</button></a>
         <a href="/"><button>Home</button></a>
     </div>

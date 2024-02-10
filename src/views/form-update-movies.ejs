@@ -9,32 +9,34 @@
             <a href="/"><img src="/img/logo-DH.png" alt="Logo Digital House"></a>
         </figure>
         
-        <div class="div_titulo"><h1>Actualice los datos de <%= MoViE.title %>...</h1></div>
+        <div class="div_titulo"><h1>Actualice los datos de <%= movie.title%> ...</h1></div>
         
-        <form action="/movies/update/<%= MoViE.id %>?method_PUT" method="post">
+        <form action="/movies/update/<%= movie.id%>?_method=PUT" method="post">
+            
             <div class="div_form">
-                <label for="">ID</label>
-                <input type="number">
+                <label for="title">Title</label>
+                <input type="text" name="title" value="<%= movie.title %>">
+                <p class="errors_validations"><%= locals.errors && errors.title ? errors.title.msg: null %></p> 
             </div>
             <div class="div_form">
-                <label for="">Title</label>
-                <input type="text">
+                <label for="rating">Rating</label>
+                <input type="text" name="rating" value="<%= movie.rating %>">
+                <p class="errors_validations"><%= locals.errors && errors.title ? errors.title.msg: null %></p>
             </div>
             <div class="div_form">
-                <label for="">Rating</label>
-                <input type="text">
+                <label for="awards">Awards</label>
+                <input type="text" name="awards" value="<%= movie.awards %>">
+                <p class="errors_validations"><%= locals.errors && errors.title ? errors.title.msg: null %></p>
             </div>
             <div class="div_form">
-                <label for="">Awards</label>
-                <input type="text">
+                <label for="release_date">Release Date</label>
+                <input type="text" name="release_date" value="<%= movie.release_date %>">
+                <p class="errors_validations"><%= locals.errors && errors.title ? errors.title.msg: null %></p>
             </div>
             <div class="div_form">
-                <label for="">Release Date</label>
-                <input type="text">
-            </div>
-            <div class="div_form">
-                <label for="">Length</label>
-                <input type="text">
+                <label for="length">Length</label>
+                <input type="text" name="length" value="<%= movie.length %>">
+                <p class="errors_validations"><%= locals.errors && errors.title ? errors.title.msg: null %></p>
             </div>
         
             <div class="div_button">

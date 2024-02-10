@@ -103,3 +103,9 @@ form {
   margin: 5px;
   border-radius: 5px;
 }
+
+.errors_validations {
+  color: red; 
+  font-size: 18px; 
+  font-style: italic;
+}
