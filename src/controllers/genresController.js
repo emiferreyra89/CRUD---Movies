@@ -7,7 +7,7 @@ const genresController = {
                 res.render('genresList',{ genres : genres })
             })
             .catch(error => {
-                res.send("Por aca no es")
+                res.render('errorView',{title:"Error"})
             }) 
     },
 
@@ -18,7 +18,7 @@ const genresController = {
                 res.render('genresDetail',{ genre : genre })
             })
             .catch(error => {
-                res.send("Por aca no es")
+                res.render('errorView',{title:"Error"})
             })
     }
 }

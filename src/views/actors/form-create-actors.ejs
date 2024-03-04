@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title><%= title %></title>
+        <link rel='stylesheet' href='/css/style.css' />
+    </head>
+    <body>
+        <figure>
+            <a href="/"><img src="/img/logo-DH.png" alt="Logo Digital House"></a>
+        </figure>
+        
+        <div class="div_titulo"><h1>Complete los datos del nuevo actor...</h1></div>
+        
+        <form action="/actors/create" method="post">
+
+            <div class="div_form">
+                <label for="first_name">First Name</label>
+                <input type="text" name="first_name" value="<%= locals.oldData ? oldData.first_name : null %>" placeholder="Nombre Actor">
+                <p class="errors_validations"><%= locals.errors && errors.first_name ? errors.first_name.msg: null %></p>
+            </div>
+            <div class="div_form">
+              <label for="last_name">Last Name</label>
+              <input type="text" name="last_name" value="<%= locals.oldData ? oldData.last_name : null %>" placeholder="Apellido Actor">
+              <p class="errors_validations"><%= locals.errors && errors.last_name ? errors.last_name.msg: null %></p>
+          </div>
+            <div class="div_form">
+                <label for="rating">Rating</label>
+                <input type="text" name="rating" value="<%= locals.oldData ? oldData.rating : null %>" placeholder="Valoracion del actor (Por ej. 8.5 o 10)">
+                <p class="errors_validations"><%= locals.errors && errors.rating ? errors.rating.msg: null %></p>
+            </div>
+        
+            <div class="div_button">
+                <button type="submit">Create</button>   
+            </div>
+        </form> <br>
+
+        <div class="div_button">
+            <a href="/"><button>Cancel</button></a>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title><%= title %></title>
+        <link rel='stylesheet' href='/css/style.css' />
+    </head>
+    <body>
+        <figure>
+            <a href="/"><img src="/img/logo-DH.png" alt="Logo Digital House"></a>
+        </figure>
+        
+        <div class="div_titulo"><h1>Actualice los datos de <%= movie.title %> ...</h1></div>
+        
+        <form action="/movies/update/<%= movie.id%>?_method=PUT" method="post">
+            
+            <div class="div_form">
+                <label for="title">Title</label>
+                <input type="text" name="title" value="<%= movie.title %>">
+                <p class="errors_validations"><%= locals.errors && errors.title ? errors.title.msg: null %></p> 
+            </div>
+            <div class="div_form">
+                <label for="rating">Rating</label>
+                <input type="text" name="rating" value="<%= movie.rating %>">
+                <p class="errors_validations"><%= locals.errors && errors.rating ? errors.rating.msg: null %></p>
+            </div>
+            <div class="div_form">
+                <label for="awards">Awards</label>
+                <input type="text" name="awards" value="<%= movie.awards %>">
+                <p class="errors_validations"><%= locals.errors && errors.awards ? errors.awards.msg: null %></p>
+            </div>
+            <div class="div_form">
+                <label for="release_date">Release Date</label>
+                <input type="text" name="release_date" value="<%= movie.release_date %>">
+                <p class="errors_validations"><%= locals.errors && errors.release_date ? errors.release_date.msg: null %></p>                
+            </div>
+            <div class="div_form">
+                <label for="length">Length</label>
+                <input type="text" name="length" value="<%= movie.length %>">
+                <p class="errors_validations"><%= locals.errors && errors.length ? errors.length.msg: null %></p>
+            </div>
+            <div class="div_form">
+                <label for="genre_id">Genres</label>
+                <select name="genre_id" id="">
+                    <option value= '<%= genres[0].id %>' <%= movie.genre_id &&  movie.genre_id == genres[0].id  ? 'selected' : locals.oldData && oldData.genre_id == genres[0].id ?  'selected' : null %>> <%= genres[0].name %> </option>
+                    <option value= '<%= genres[1].id %>' <%= movie.genre_id &&  movie.genre_id == genres[1].id  ? 'selected' : locals.oldData && oldData.genre_id == genres[1].id ?  'selected' : null %>> <%= genres[1].name %> </option>
+                    <option value= '<%= genres[2].id %>' <%= movie.genre_id &&  movie.genre_id == genres[2].id  ? 'selected' : locals.oldData && oldData.genre_id == genres[2].id ?  'selected' : null %>> <%= genres[2].name %> </option>
+                    <option value= '<%= genres[3].id %>' <%= movie.genre_id &&  movie.genre_id == genres[3].id  ? 'selected' : locals.oldData && oldData.genre_id == genres[3].id ?  'selected' : null %>> <%= genres[3].name %> </option>
+                    <option value= '<%= genres[4].id %>' <%= movie.genre_id &&  movie.genre_id == genres[4].id  ? 'selected' : locals.oldData && oldData.genre_id == genres[4].id ?  'selected' : null %>> <%= genres[4].name %> </option>
+                    <option value= '<%= genres[5].id %>' <%= movie.genre_id &&  movie.genre_id == genres[5].id  ? 'selected' : locals.oldData && oldData.genre_id == genres[5].id ?  'selected' : null %>> <%= genres[5].name %> </option>
+                    <option value= '<%= genres[6].id %>' <%= movie.genre_id &&  movie.genre_id == genres[6].id  ? 'selected' : locals.oldData && oldData.genre_id == genres[6].id ?  'selected' : null %>> <%= genres[6].name %> </option>
+                    <option value= '<%= genres[7].id %>' <%= movie.genre_id &&  movie.genre_id == genres[7].id  ? 'selected' : locals.oldData && oldData.genre_id == genres[7].id ?  'selected' : null %>> <%= genres[7].name %> </option>
+                    <option value= '<%= genres[8].id %>' <%= movie.genre_id &&  movie.genre_id == genres[8].id  ? 'selected' : locals.oldData && oldData.genre_id == genres[8].id ?  'selected' : null %>> <%= genres[8].name %> </option>
+                    <option value= '<%= genres[9].id %>' <%= movie.genre_id &&  movie.genre_id == genres[9].id  ? 'selected' : locals.oldData && oldData.genre_id == genres[9].id ?  'selected' : null %>> <%= genres[9].name %> </option>
+                    <option value= '<%= genres[10].id %>' <%= movie.genre_id &&  movie.genre_id == genres[10].id ? 'selected' : locals.oldData && oldData.genre_id == genres[10].id ? 'selected' : null %>> <%= genres[10].name %> </option>
+                    <option value= '<%= genres[11].id %>' <%= movie.genre_id &&  movie.genre_id == genres[11].id ? 'selected' : locals.oldData && oldData.genre_id == genres[11].id ? 'selected' : null %>> <%= genres[11].name %> </option>
+                </select>
+                <p class="errors_validations"><%= locals.errors && errors.genre_id ? errors.genre_id.msg: null %></p>
+            </div>
+        
+            <div class="div_button">
+                <button type="submit">Save</button>   
+            </div>
+        </form> <br>
+
+        <div class="div_button">
+            <a href="/movies"><button>Cancel</button></a>
+        </div>
+
+    </body>
+</html>

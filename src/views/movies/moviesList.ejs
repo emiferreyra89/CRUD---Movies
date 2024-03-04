@@ -18,7 +18,15 @@
     <ul>
         <% for( let i = 0; i < movies.length; i++ ) { %>
         <li style="width: 40%;">
-            <a href="/movies/detail/<%= movies[i].id %>"><p><%= movies[i].title %></p></a>
+            <a href="/movies/detail/<%= movies[i].id %>"><p><%= movies[i].title %></p></a>  
+                <% if (movies[i].genres){%>
+                    <p style="font-size: 16px; margin-bottom: 20px;"><%= `(${movies[i].genres.name})` %></p>
+                <% } %>
+                <ul>
+                    <% for(let x=0; x<movies[i].actors.lenght; x++) { %>
+                    <li><%= movies[i].actors[x].first_name %> <%= movies[i].actors[x].last_name %></li>
+                    <% } %>
+                </ul>
         </li>
         <% } %>
     </ul>

@@ -97,7 +97,7 @@ form {
   margin: 5px 10px;
 }
 
-.div_form input {
+.div_form input,select {
   font-size: 18px;
   padding: 10px;
   margin: 5px;

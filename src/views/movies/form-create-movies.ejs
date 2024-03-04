@@ -38,9 +38,28 @@
                 <input type="text" name="length" value="<%= locals.oldData ? oldData.length : null %>" placeholder="Duracion de la pelicula en minutos (Por ej. 120)">
                 <p class="errors_validations"><%= locals.errors && errors.length ? errors.length.msg: null %></p>
             </div>
+            <div class="div_form">
+                <label for="genre_id">Genres</label>
+                <select name="genre_id" id="">
+                    <option value="" >Elegir Genero</option>
+                    <option value= '<%= genres[0].id %>' <%= locals.oldData && oldData.genre_id == genres[0].id ?  'selected' : null %>> <%= genres[0].name %> </option>
+                    <option value= '<%= genres[1].id %>' <%= locals.oldData && oldData.genre_id == genres[1].id ?  'selected' : null %>> <%= genres[1].name %> </option>
+                    <option value= '<%= genres[2].id %>' <%= locals.oldData && oldData.genre_id == genres[2].id ?  'selected' : null %>> <%= genres[2].name %> </option>
+                    <option value= '<%= genres[3].id %>' <%= locals.oldData && oldData.genre_id == genres[3].id ?  'selected' : null %>> <%= genres[3].name %> </option>
+                    <option value= '<%= genres[4].id %>' <%= locals.oldData && oldData.genre_id == genres[4].id ?  'selected' : null %>> <%= genres[4].name %> </option>
+                    <option value= '<%= genres[5].id %>' <%= locals.oldData && oldData.genre_id == genres[5].id ?  'selected' : null %>> <%= genres[5].name %> </option>
+                    <option value= '<%= genres[6].id %>' <%= locals.oldData && oldData.genre_id == genres[6].id ?  'selected' : null %>> <%= genres[6].name %> </option>
+                    <option value= '<%= genres[7].id %>' <%= locals.oldData && oldData.genre_id == genres[7].id ?  'selected' : null %>> <%= genres[7].name %> </option>
+                    <option value= '<%= genres[8].id %>' <%= locals.oldData && oldData.genre_id == genres[8].id ?  'selected' : null %>> <%= genres[8].name %> </option>
+                    <option value= '<%= genres[9].id %>' <%= locals.oldData && oldData.genre_id == genres[9].id ?  'selected' : null %>> <%= genres[9].name %> </option>
+                    <option value= '<%= genres[10].id %>' <%= locals.oldData && oldData.genre_id == genres[10].id ? 'selected' : null %>> <%= genres[10].name %> </option>
+                    <option value= '<%= genres[11].id %>' <%= locals.oldData && oldData.genre_id == genres[11].id ? 'selected' : null %>> <%= genres[11].name %> </option>
+                </select>
+                <p class="errors_validations"><%= locals.errors && errors.genre_id ? errors.genre_id.msg: null %></p>
+            </div>
         
             <div class="div_button">
-                <button type="submit">Save</button>   
+                <button type="submit">Create</button>   
             </div>
         </form> <br>
 

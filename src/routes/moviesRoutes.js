@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const validations_Movies = require('../validations/validationsMovies')
+const {valid_Movies_create,valid_Movies_update} = require('../validations/validationsMovies')
 
 const moviesController = require('../controllers/moviesController');
  
@@ -21,13 +21,13 @@ router.get('/movies/detail/:id', moviesController.detail);
 router.get('/movies/add', moviesController.add);
 
 ///..Recibe los datos del formulario anterior y escribe la información en la base de datos...
-router.post('/movies/create', validations_Movies, moviesController.create);
+router.post('/movies/create', valid_Movies_create, moviesController.create);
 
 ///..Muestra un formulario ya completo con los datos de la película según el id que indica la URL...
 router.get('/movies/edit/:id', moviesController.edit);
 
 ///..Recibe información del formulario anterior y en conjunto con el id que indica la URL actualiza la información de la película...
-router.put('/movies/update/:id', validations_Movies, moviesController.update);
+router.put('/movies/update/:id', valid_Movies_update, moviesController.update);
 
 ///..Elimina la película indicada en la URL según el ID...
 router.delete('/movies/delete/:id', moviesController.delete);

@@ -17,6 +17,8 @@
     <p>RATING: <%= actor.rating %></p>
     </div>
     <div class="div_button">
+        <a href="/actors/edit/<%= actor.id %>"><button>Edit</button></a>
+        <form action="/actors/delete/<%= actor.id %>?_method=DELETE" method="post"><button type="submit">Delete</button></form>
         <a href="/actors"><button>Actors</button></a>
         <a href="/"><button>Home</button></a>
     </div>

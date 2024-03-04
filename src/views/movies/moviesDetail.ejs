@@ -18,6 +18,15 @@
     <p>AWARDS: <%= movie.awards %> </p>
     <p>LENGTH: <%= movie.length + ' min'%> </p>
     <p>RELEASE DATE: <%= movie.release_date %> </p>
+    <p>GENRE: <%= movie.genres.name %> </p>
+    <p>ACTORS:</p>
+    <ul>
+        <% for (let x=0; x < movie.actors.length; x++) {%>
+        <a href="/actors/detail/<%= movie.actors[x].id %>"><li style="font-style: italic;font-weight: bold; margin-left: 20px;"> 
+            <p><%= movie.actors[x].first_name %> <%= movie.actors[x].last_name %></p>
+        </li></a>
+        <% } %>
+    </ul>
     </div>
     <div class="div_button">
         <a href="/movies/edit/<%= movie.id %>"><button>Edit</button></a>

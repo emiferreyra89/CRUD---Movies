@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title><%= title %></title>
+        <link rel='stylesheet' href='/css/style.css' />
+    </head>
+    <body>
+        <figure>
+            <a href="/"><img src="/img/logo-DH.png" alt="Logo Digital House"></a>
+        </figure>
+        
+        <div class="div_titulo">
+            <h1>Actualice los datos de 
+                <%= locals.actor ? actor.first_name : locals.old && old.first_name ? old.first_name : null %> 
+                <%= locals.actor ? actor.last_name : locals.old && old.last_name ? old.last_name : null %>
+            </h1>
+        </div>
+        
+        <form action="/actors/update/<%= actor.id %>?_method=PUT" method="post">
+            
+            <div class="div_form">
+                <label for="first_name">First Name</label>
+                <input type="text" name="first_name" value="<%= locals.actor ? actor.first_name : locals.old && old.first_name ? old.first_name : null %>">
+                <p class="errors_validations"><%= locals.errors && errors.first_name ? errors.first_name.msg: null %></p> 
+            </div>
+            <div class="div_form">
+              <label for="last_name">Last Name</label>
+              <input type="text" name="last_name" value="<%= locals.actor ? actor.last_name : locals.old && old.last_name ? old.last_name : null %>">
+              <p class="errors_validations"><%= locals.errors && errors.last_name ? errors.last_name.msg: null %></p> 
+          </div>
+            <div class="div_form">
+                <label for="rating">Rating</label>
+                <input type="text" name="rating" value="<%= locals.actor ? actor.rating : locals.old && old.rating ? old.rating : null %>">
+                <p class="errors_validations"><%= locals.errors && errors.rating ? errors.rating.msg: null %></p>
+            </div>
+        
+            <div class="div_button">
+                <button type="submit">Save</button>   
+            </div>
+        </form> <br>
+
+        <div class="div_button">
+            <a href="/actors"><button>Cancel</button></a>
+        </div>
+
+    </body>
+</html>
