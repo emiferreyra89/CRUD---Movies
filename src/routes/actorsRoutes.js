@@ -8,6 +8,9 @@ const actorsController = require('../controllers/actorsController');
 ///..Listar todos los actores de la base de datos...
 router.get('/actors', actorsController.list);
 
+///..Retornar el actor indicado en el buscador...
+router.post('/actors/search', actorsController.search);
+
 ///..Listar los 5 mejores actores segun su rating...
 router.get('/actors/recommended', actorsController.recomended);
 

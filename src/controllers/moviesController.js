@@ -32,7 +32,6 @@ const moviesController = {
             })
             Promise.all([movieDB,movieAPI])
             .then( result => {
-                //res.send(result)
               let movies = {}
               if (result[0] != null) {
                 let movie = result[0]
@@ -64,7 +63,6 @@ const moviesController = {
         db.Movie.findAll({
             order : [
                 ['rating','DESC']
-                //['release_date','DESC']
             ],
             limit : 5
             })
@@ -75,20 +73,7 @@ const moviesController = {
                 res.render('errorView',{title:"Error"})
             })  
     },
-
-    // detail: (req,res) => {
-    //     const {id} = req.params
-    //     db.Movie.findByPk(id,{
-    //         include:[{association:'genres'},{association:'actors'}]
-    //     })
-    //         .then((movie) => {
-    //             res.render('movies/moviesDetail',{movie:movie})
-    //         })
-    //         .catch(error => {
-    //             res.render('errorView',{title:"Error"})
-    //         })
-    // },
-
+    
     detail: async (req,res) => {
         try {
             const {id} = req.params

@@ -6,23 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listado de Actores</title>
     <link rel='stylesheet' href='/css/style.css' />
-
 </head>
 
 <body>
     <figure>
         <a href="/"><img src="/img/logo-DH.png" alt="Logo Digital House"></a>
     </figure>
-    <div class="div_titulo"><h1>LISTADO DE ACTORES</h1></div>
+   
+    <div class="div_titulo">
+        <h1>LISTADO DE ACTORES</h1>
+    </div>
+    
     <a href="/actors/add" style="color: red; font-style: normal; text-decoration: underline;"><h2>+ Add New Actors</h2></a> <br>
-    <ul>
-        <% for( let i = 0; i < actors.length; i++ ) { %>
-        <li>
-            <a href="/actors/detail/<%= actors[i].id %>"><p><%= actors[i].first_name %> <%= actors[i].last_name %></p></a>
-        </li>
-        <% } %>
-    </ul>
+    
+    <div class="buscar-titulo">
+        <form action="/actors/search" method="POST">
+            <input type="text" name="titulo" id="titulo" placeholder="Buscar por Apellido">
+            <button type="submit">Search</button>
+        </form>    
+    </div>
+
+    <% if(actors.length > 0) { %>
+
+        <ul>
+            <% for( let i = 0; i < actors.length; i++ ) { %>
+            <li>
+                <a href="/actors/detail/<%= actors[i].id %>"><p><%= actors[i].first_name %> <%= actors[i].last_name %></p></a>
+            </li>
+            <% } %>
+        </ul>
+
+    <% } else { %>
+
+        <p style="font-style: italic;">No se encontraron actores</p>
+
+    <% } %>
+
     <div class="div_button">
+        <a href="/actors"><button>Actors</button></a>
         <a href="/actors/add"><button>Create</button></a>
         <a href="/actors"><button>Top</button></a>
         <a href="/"><button>Home</button></a>

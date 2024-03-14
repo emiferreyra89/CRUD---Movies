@@ -1,5 +1,6 @@
 const db = require('../database/models/index');
 const {validationResult} = require('express-validator');
+const { Op } = require('sequelize')
 
 const actorsController = {
     list: (req,res) => {
@@ -10,6 +11,17 @@ const actorsController = {
             .catch(error => {
                 res.render('errorView',{title:"Error"})
             })  
+    },
+
+    search: (req,res) => {
+        const {titulo} = req.body
+        db.Actor.findAll({
+            where: { last_name: {[Op.like]:`%${titulo}%`} }
+        })
+        .then(result => {
+            let actors = result
+            res.render('actors/actorsList',{ actors })
+        })
     },
 
     recomended: (req,res) => {
