@@ -45,11 +45,43 @@ const actorsControllerApi = {
     }
   },
 
+  update: async (req,res) => {
+    try {
+      const {id} = req.params
+      const errors = validationResult(req);
+      if(errors.isEmpty()){
+        let actorUpdate = await db.Actor.update(
+          (req.body),
+          {where: {id}}
+        )
+        .then((result)=> {
+          console.log(result);
+        })
+        return res.status(200).json({
+          data: actorUpdate,
+          status: 200,
+          update: 'ok'
+        })
+      } else {
+        const errorsMapped = errors.mapped()
+        for (const key in errorsMapped) {
+          delete errorsMapped[key].type
+          delete errorsMapped[key].location
+          delete errorsMapped[key].path
+        }
+        const errorsJson = JSON.stringify(errorsMapped)
+        throw new Error (errorsJson)
+      }
+    } catch (error) {
+        res.status(400).send(error.message)
+    }
+  },
+
   delete: async (req,res) => {
     try {
       const {id} = req.params
       await db.Actor.destroy({
-        where:{id}
+        where:{id}, force: true
       })
         .then((result => {
           res.status(200).json({

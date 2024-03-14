@@ -109,3 +109,22 @@ form {
   font-size: 18px; 
   font-style: italic;
 }
+
+.buscar-titulo {
+  margin-bottom: 30px;
+}
+
+.buscar-titulo form {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.buscar-titulo form input {
+  width: 40%;
+  font-size: 18px;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+}

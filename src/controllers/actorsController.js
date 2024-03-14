@@ -117,7 +117,7 @@ const actorsController = {
     delete: (req,res) => {
         const {id} = req.params
         db.Actor.destroy({
-            where : { id }
+            where : { id }, force: true
         })
         .then(actor => {
             res.redirect('/actors')

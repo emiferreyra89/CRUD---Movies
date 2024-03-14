@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= movie.title %> </title>
+    <title>Movie</title>
     <link rel='stylesheet' href='/css/style.css' />
 
 </head>
@@ -11,28 +11,58 @@
     <figure>
         <a href="/"><img src="/img/logo-DH.png" alt="Logo Digital House"></a>
     </figure>
+
+<% if(movieDB != null) { %>
+
     <div class="div_details">
-    <h1><%= movie.title %> </h1>    
-    <br>
-    <p>RATING: <%= movie.rating %> </p>
-    <p>AWARDS: <%= movie.awards %> </p>
-    <p>LENGTH: <%= movie.length + ' min'%> </p>
-    <p>RELEASE DATE: <%= movie.release_date %> </p>
-    <p>GENRE: <%= movie.genres.name %> </p>
-    <p>ACTORS:</p>
-    <ul>
-        <% for (let x=0; x < movie.actors.length; x++) {%>
-        <a href="/actors/detail/<%= movie.actors[x].id %>"><li style="font-style: italic;font-weight: bold; margin-left: 20px;"> 
-            <p><%= movie.actors[x].first_name %> <%= movie.actors[x].last_name %></p>
-        </li></a>
-        <% } %>
-    </ul>
+        <h1><%= movieDB.title%> </h1>    
+        <br>
+        <p>RATING: <%= movieDB.rating %> </p>
+        <p>AWARDS: <%= movieDB.awards %> </p>
+        <p>LENGTH: <%= movieDB.length + ' min'%> </p>
+        <p>RELEASE DATE: <%= movieDB.release_date %> </p>
+        <p>GENRE: <%= movieDB.genres.name %> </p>
+        <p>ACTORS:</p>
+        <ul>
+            <% for (let x=0; x < movieDB.actors.length; x++) {%>
+                <a href="/actors/detail/<%= movieDB.actors[x].id %>">
+                    <li style="font-style: italic;font-weight: bold; margin-left: 20px;"> 
+                        <p><%= movieDB.actors[x].first_name %> <%= movieDB.actors[x].last_name %></p>
+                    </li>
+                </a>
+            <% } %>
+        </ul>
     </div>
     <div class="div_button">
-        <a href="/movies/edit/<%= movie.id %>"><button>Edit</button></a>
-        <form action="/movies/delete/<%= movie.id %>?_method=DELETE" method="post"><button type="submit">Delete</button></form>
+        <a href="/movies/edit/<%= movieDB.id %>"><button>Edit</button></a>
+        <form action="/movies/delete/<%= movieDB.id %>?_method=DELETE" method="post"><button type="submit">Delete</button></form>
         <a href="/movies"><button>Movies</button></a>
         <a href="/"><button>Home</button></a>
     </div>
+
+<% } else { %>
+
+    <div class="div_details">
+        <h1><%= movieAPI.Title %> </h1>    
+        <br>
+        <p>RATING: <%= movieAPI.imdbRating %> </p>
+        <p>AWARDS: <%= movieAPI.Awards %> </p>
+        <p>LENGTH: <%= movieAPI.Runtime + ' min'%> </p>
+        <p>RELEASE DATE: <%= movieAPI.Released %> </p>
+        <p>GENRE: <%= movieAPI.Genres %> </p>
+        <p>ACTORS:  </p><br>
+        <li style="font-style: italic;font-weight: bold; margin-left: 20px;"> 
+            <p><%= movieAPI.Actors %></p>
+        </li>
+    </div>
+
+    <div class="div_button">
+        <a href="/movies"><button>Movies</button></a>
+        <a href="/"><button>Home</button></a>
+    </div>
+
+    <% } %>
+
+
 </body>
 </html>

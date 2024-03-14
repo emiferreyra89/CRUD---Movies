@@ -26,8 +26,8 @@ router.get('/actors/edit/:id', actorsController.edit);
 ///..Recibe información del formulario anterior y en conjunto con el id que indica la URL actualiza la información del actor...
 router.put('/actors/update/:id', valid_Actors, actorsController.update);
 
- ///..Elimina el actor indicada en la URL según el ID...
- router.delete('/actors/delete/:id', actorsController.delete);
+///..Elimina el actor indicada en la URL según el ID...
+router.delete('/actors/delete/:id', actorsController.delete);
 
 
 module.exports = router;

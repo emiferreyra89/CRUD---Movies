@@ -11,30 +11,57 @@
     <figure>
         <a href="/"><img src="/img/logo-DH.png" alt="Logo Digital House"></a>
     </figure>
+    
     <div class="div_titulo">
         <h1>LISTADO DE PELÍCULAS</h1>
     </div> <br>
+
     <a href="/movies/add" style="color: red; font-style: normal; text-decoration: underline;"><h2>+ Add New Movies</h2></a> <br>
-    <ul>
-        <% for( let i = 0; i < movies.length; i++ ) { %>
-        <li style="width: 40%;">
-            <a href="/movies/detail/<%= movies[i].id %>"><p><%= movies[i].title %></p></a>  
-                <% if (movies[i].genres){%>
-                    <p style="font-size: 16px; margin-bottom: 20px;"><%= `(${movies[i].genres.name})` %></p>
-                <% } %>
-                <ul>
-                    <% for(let x=0; x<movies[i].actors.lenght; x++) { %>
-                    <li><%= movies[i].actors[x].first_name %> <%= movies[i].actors[x].last_name %></li>
+    
+    <div class="buscar-titulo">
+        <form action="/movies/search" method="POST">
+            <input type="text" name="titulo" id="titulo">
+            <button type="submit">Search</button>
+        </form>    
+    </div>
+    
+    <% if ( movies && movies.length > 0 ) { %>
+
+        <ul>
+            <% for( let i = 0; i < movies.length; i++ ) { %>
+            <li style="width: 40%;">
+                <a href="/movies/detail/<%= movies[i].id %>"><p><%= movies[i].title %></p></a>  
+                    <% if (movies[i].genres){%>
+                        <p style="font-size: 16px; margin-bottom: 20px;"><%= `(${movies[i].genres.name})` %></p>
                     <% } %>
-                </ul>
-        </li>
+            </li>
+            <% } %>
+        </ul>
+
+    <% } else if (!movie || movie == null || movie.Response == 'False') { %>
+
+        <p style="font-style: italic;">No se encontraron elementos</p>
+
+        <% } else { %>
+
+            <a href="/movies/detail/<%= movie.id ? movie.id : movie.imdbID %>"><p><%= movie.title ? movie.title : movie.Title %></a>
+                <% if (movie.genres){%>
+            <p style="font-size: 16px; margin-bottom: 20px;"><%= `(${movie.genres.name})` %></p>
+                <% } else if (movie.Genre) { %>
+            <p style="font-size: 16px; margin-bottom: 20px;"><%= `(${movie.Genre})` %></p>
+                <% } else { %>
+            <p style="font-size: 16px; margin-bottom: 20px;">(Sin genero)</p>        
+                <% } %>
+        
         <% } %>
-    </ul>
+
     <div class="div_button">
+        <a href="/movies"><button>Movies</button></a>
         <a href="/movies/add"><button>Create</button></a>
         <a href="/movies"><button>Top</button></a>
         <a href="/"><button>Home</button></a>
     </div>
+   
 </body>
 
 </html>

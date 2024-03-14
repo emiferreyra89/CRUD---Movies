@@ -8,6 +8,9 @@ const moviesController = require('../controllers/moviesController');
 ///..Listar todas las películas de la base de datos...
 router.get('/movies', moviesController.list);
 
+///..Retornar la pelicula indicada en el buscador...
+router.post('/movies/search', moviesController.search);
+
 ///..Listar todas las películas por orden de lanzamiento (de la mas actual a la ultima)...
 router.get('/movies/new', moviesController.new);
 
@@ -31,5 +34,6 @@ router.put('/movies/update/:id', valid_Movies_update, moviesController.update);
 
 ///..Elimina la película indicada en la URL según el ID...
 router.delete('/movies/delete/:id', moviesController.delete);
+
 
 module.exports = router;
